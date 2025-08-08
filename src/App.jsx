@@ -179,7 +179,7 @@ export default function App() {
           </div>
         </div>
       
-            <div className="mt-6 text-sm text-slate-500 text-center">
+            <div className="mt-6 text-sm text-slate-500">
               {t('您也可以直接透過電子郵件與我們聯繫：','You can also reach us directly via email:')}
               <a href="mailto:alex.t@nexapath.us" className="underline ml-1">Alex Tseng &lt;alex.t@nexapath.us&gt;</a>
             </div>
