@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+/* ---- Mobile/iOS fixes ---- */
+html, body { width:100%; overflow-x:hidden; -webkit-text-size-adjust:100%; }
+section { scroll-margin-top: 88px; } /* prevent sticky header from covering anchors */
+img, svg, video, canvas { max-width: 100%; height: auto; }
+header { padding-top: env(safe-area-inset-top); }
+@supports (height: 100svh) {
+  .min-h-screen { min-height: 100svh; } /* iOS Safari dynamic viewport */
+}

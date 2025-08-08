@@ -11,7 +11,7 @@ export default function App() {
   return (
     <main className="min-h-screen bg-white text-slate-900">
       {/* Navbar */}
-      <header className="sticky top-0 z-50 bg-white/85 backdrop-blur border-b border-slate-200">
+      <header className="sticky top-0 z-50 bg-white/85 backdrop-blur border-b border-slate-200" style={{paddingTop:'env(safe-area-inset-top)'}}>
         <div className="mx-auto max-w-7xl h-16 px-4 sm:px-6 lg:px-8 flex items-center justify-between">
           <a href="#home" className="flex items-center gap-3 group">
             <span className="inline-flex items-center gap-2">
@@ -34,6 +34,14 @@ export default function App() {
           </div>
         </div>
       </header>
+
+      {/* Hero Image */}
+      <section id="home" className="bg-white">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-8">
+          <img src="/hero.jpg" alt="Los Angeles skyline with San Gabriel Mountains" className="w-full rounded-3xl shadow-sm ring-1 ring-slate-200" loading="eager" fetchpriority="high" />
+        </div>
+      </section>
+    
 
       {/* Hero */}
       <section id="home" className="relative overflow-hidden">
@@ -62,7 +70,7 @@ export default function App() {
       {/* Services */}
       <section id="services" className="py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-extrabold">{t('我們的服務','Our Services')}</h2>
+          \1\n            <p className="mt-2 text-slate-600">Email: <a href="mailto:alex.t@nexapath.us" className="underline">Alex Tseng &lt;alex.t@nexapath.us&gt;</a></p>
           <div className="mt-8 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
               {title:t('供應鏈尋源','Sourcing'),desc:t('製造商／OEM／ODM 尋找，品質稽核與打樣協調','Find manufacturers/OEM/ODM; QA audits & sample coordination'),icon:'🔎'},
