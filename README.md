@@ -1,21 +1,16 @@
 # NexaPath Official Site
 
-Vite + React + Tailwind single-page bilingual website for NexaPath (business resource sourcing & matching).
+Vite + React + Tailwind single-page bilingual website for NexaPath (with LA/CA/USA SEO).
 
 ## Dev
-```bash
 npm install
 npm run dev
-```
-Open http://localhost:5173
 
 ## Build
-```bash
 npm run build
 npm run preview
-```
 
 ## Deploy (Vercel)
-- Framework: **Vite**
-- Build Command: `npm run build`
-- Output Directory: `dist`
+Framework: Vite
+Build Command: npm run build
+Output Directory: dist

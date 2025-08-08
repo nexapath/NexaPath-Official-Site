@@ -1,10 +1,12 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 export default function App() {
-  const [lang, setLang] = useState('zh')
-  const t = (zh, en) => (lang === 'zh' ? zh : en)
+  const detect = () => (typeof navigator !== 'undefined' && navigator.language || 'en').toLowerCase().startsWith('zh') ? 'zh' : 'en'
+  const [lang, setLang] = useState(localStorage.getItem('nexa_lang') || detect())
+  useEffect(()=>{ localStorage.setItem('nexa_lang', lang) }, [lang])
+  const t = (zh, en) => (lang==='zh'? zh : en)
   const brand = 'NexaPath'
-  const brandPrimary = '#0A2A5E' // NexaPath navy
+  const brandPrimary = '#0A2A5E'
 
   return (
     <main className="min-h-screen bg-white text-slate-900">
@@ -21,7 +23,7 @@ export default function App() {
             <a href="#services" className="hover:text-indigo-700">{t('服務','Services')}</a>
             <a href="#industries" className="hover:text-indigo-700">{t('產業','Industries')}</a>
             <a href="#process" className="hover:text-indigo-700">{t('合作流程','Process')}</a>
-            <a href="#cases" className="hover:text-indigo-700">{t('案例','Cases')}</a>
+            <a href="#why" className="hover:text-indigo-700">{t('為什麼選擇我們','Why Us')}</a>
             <a href="#contact" className="hover:text-indigo-700">{t('聯絡','Contact')}</a>
           </nav>
           <div className="flex items-center gap-3">
@@ -39,21 +41,14 @@ export default function App() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-10 items-center py-16">
           <div>
             <h1 className="text-4xl md:text-5xl font-black leading-tight">
-              {t('商務資源，一條路走到位','Business Matches, The Right Path')}<br/>
-              <span className="text-slate-600">{t('NexaPath 專注於跨境與本地的商務資源尋找與媒合','NexaPath specializes in sourcing and matching business resources across borders and locally')}</span>
+              {t('跨境、在地資源整合專家，助你找到最佳夥伴。','We match you with perfect partners — like a business Cupid!')}
             </h1>
             <p className="mt-6 text-slate-700 text-lg">
-              {t(
-                '從供應鏈、渠道、支付到法規顧問，提供端到端的資源整合。此段為替代文字，待提供正式文案後替換。',
-                'End-to-end resource orchestration: supply chain, channels, payments, and regulatory advisory. Placeholder copy to be replaced with your final messaging.'
-              )}
+              {t('專注商務資源尋找與媒合，供應鏈尋源｜渠道拓展｜品牌成長。立足洛杉磯與加州，服務美國與全球。','Based in Los Angeles, California. Sourcing, channel development, and brand growth across North America & APAC.')}
             </p>
             <div className="mt-8 flex gap-3">
               <a href="#services" className="rounded-2xl px-5 py-3 text-white font-semibold hover:opacity-95" style={{backgroundColor: brandPrimary}}>{t('了解服務','Explore Services')}</a>
               <a href="#contact" className="rounded-2xl border border-slate-300 px-5 py-3 font-semibold hover:bg-white/60">{t('取得提案','Request Proposal')}</a>
-            </div>
-            <div className="mt-6 text-sm text-slate-600">
-              {t('服務地區：北美｜台港澳｜東南亞（可擴充）','Service regions: North America · Hong Kong/Taiwan · SE Asia (extendable)')}
             </div>
           </div>
           <div className="relative">
@@ -65,7 +60,7 @@ export default function App() {
                   </svg>
                 </div>
                 <h3 className="font-bold text-xl">{t('資源地圖（示意）','Resource Map (Placeholder)')}</h3>
-                <p className="mt-2 text-slate-600">{t('供應商／渠道／顧問一站式整合','One-stop integration of suppliers, channels, advisors')}</p>
+                <p className="mt-2 text-slate-600">{t('供應商／渠道／顧問一站式整合','One‑stop integration of suppliers, channels, and advisors')}</p>
               </div>
             </div>
           </div>
@@ -78,12 +73,9 @@ export default function App() {
           <h2 className="text-2xl font-extrabold">{t('我們的服務','Our Services')}</h2>
           <div className="mt-8 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
-              {title:t('供應鏈尋源','Sourcing'),desc:t('製造商、OEM/ODM、品質稽核（替代）','Manufacturers, OEM/ODM, QA audits (placeholder)'),icon:'🔎'},
-              {title:t('渠道與商務開發','Channels & BizDev'),desc:t('分銷代理、跨境上架、合作談判（替代）','Distribution, cross-border listing, partnerships (placeholder)'),icon:'🤝'},
-              {title:t('支付與結算方案','Payments & Settlement'),desc:t('線上收單、跨幣結算、風控（替代）','Acquiring, multi-currency settlement, risk controls (placeholder)'),icon:'💳'},
-              {title:t('合規與法規顧問','Regulatory & Compliance'),desc:t('公司設立、稅務、行業牌照（替代）','Entity setup, tax, sector licenses (placeholder)'),icon:'⚖️'},
-              {title:t('品牌與成長','Brand & Growth'),desc:t('站點搭建、SEO/投放、內容在地化（替代）','Websites, SEO/ads, localization (placeholder)'),icon:'📈'},
-              {title:t('專案管理與交付','Project Delivery'),desc:t('進度里程碑、SLA、週報（月報）（替代）','Milestones, SLAs, weekly/monthly reports (placeholder)'),icon:'🧭'},
+              {title:t('供應鏈尋源','Sourcing'),desc:t('製造商／OEM／ODM 尋找，品質稽核與打樣協調','Find manufacturers/OEM/ODM; QA audits & sample coordination'),icon:'🔎'},
+              {title:t('渠道與商務開發','Channels & BizDev'),desc:t('分銷代理、合作洽談、上架與在地營運夥伴','Distribution partners, partnerships, listings, local operators'),icon:'🤝'},
+              {title:t('品牌與成長','Brand & Growth'),desc:t('官網與內容在地化、SEO、成長行銷','Website & localization, SEO, growth marketing'),icon:'📈'},
             ].map((s,i)=> (
               <div key={i} className="rounded-3xl border border-slate-200 bg-white p-6 hover:shadow-sm transition">
                 <div className="text-3xl" aria-hidden>{s.icon}</div>
@@ -100,10 +92,31 @@ export default function App() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl font-extrabold">{t('聚焦產業','Industries We Serve')}</h2>
           <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {['電商與D2C','支付金融','遊戲與數位內容','製造與供應鏈'].map((z,i)=> (
+            {['電商與 D2C','支付金融','遊戲與數位內容','製造與供應鏈'].map((z,i)=> (
               <div key={i} className="rounded-3xl p-6 border border-slate-200 bg-indigo-50/40">
-                <div className="font-semibold text-slate-800">{t(z,['E-commerce & D2C','Payments/Fintech','Gaming & Digital','Manufacturing & Supply'][i])}</div>
+                <div className="font-semibold text-slate-800">{t(z,['E‑commerce & D2C','Payments/Fintech','Gaming & Digital','Manufacturing & Supply'][i])}</div>
                 <div className="text-slate-500 text-sm mt-1">{t('替代描述文字','Placeholder description')}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Why NexaPath */}
+      <section id="why" className="py-16 bg-white">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl font-extrabold">{t('為什麼選擇 NexaPath','Why NexaPath')}</h2>
+          <div className="mt-8 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              { title: t('北美＋亞太雙區供應鏈與合作網絡','Network in North America & APAC'), desc: t('橫跨北美與亞太的供應商與合作夥伴網絡，快速媒合合適資源。','Coverage across North America & APAC to match the right partners fast.') },
+              { title: t('中英雙語專案管理與溝通','Bilingual project management'), desc: t('全程中英雙語與你及夥伴無縫協作，降低溝通成本。','Seamless collaboration in English and Chinese to reduce friction.') },
+              { title: t('跨產業經驗','Cross‑industry experience'), desc: t('涵蓋電商、製造、金融科技與數位內容，理解不同場景需求。','Experience across e‑commerce, manufacturing, fintech, and gaming.') },
+              { title: t('市場在地化能力','Localized market entry'), desc: t('提供在地化策略與夥伴，讓落地更順暢。','Localization strategy and partners to land smoothly.') },
+              { title: t('靈活的合作模式','Flexible engagement'), desc: t('按需求選擇顧問、專案或長期合作，彈性組合。','Consulting, project‑based, or retainer—choose what fits.') },
+            ].map((u, i) => (
+              <div key={i} className="rounded-3xl border border-slate-200 bg-white p-6">
+                <h3 className="font-bold">{u.title}</h3>
+                <p className="text-slate-700 text-sm mt-1">{u.desc}</p>
               </div>
             ))}
           </div>
@@ -123,31 +136,6 @@ export default function App() {
               </li>
             ))}
           </ol>
-          <div className="mt-8">
-            <a href="#contact" className="inline-flex items-center gap-2 rounded-2xl px-5 py-3 text-white font-semibold" style={{backgroundColor: brandPrimary}}>
-              <span>📬</span>{t('取得初步諮詢（免費）','Get a Free Consultation')}
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* Cases */}
-      <section id="cases" className="py-16 bg-white">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-extrabold">{t('成功案例（示意）','Selected Cases (Placeholder)')}</h2>
-          <div className="mt-8 grid md:grid-cols-3 gap-6">
-            {[1,2,3].map(i=> (
-              <article key={i} className="rounded-3xl ring-1 ring-slate-200 overflow-hidden bg-white">
-                <div className="aspect-[4/3] bg-gradient-to-br from-indigo-100 to-amber-100 grid place-items-center">
-                  <span className="text-slate-500">{t('案例圖片','Case Image')}</span>
-                </div>
-                <div className="p-5">
-                  <h3 className="font-bold">{t('跨境支付接入與對賬優化','Cross-border acquiring & reconciliation')}</h3>
-                  <p className="text-slate-600 text-sm mt-1">{t('三個月內完成 3 個支付通道導入，提升授權率 12%（替代）','Integrated 3 PSPs within 3 months; +12% auth rate (placeholder)')}</p>
-                </div>
-              </article>
-            ))}
-          </div>
         </div>
       </section>
 
