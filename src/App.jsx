@@ -53,7 +53,7 @@ export default function App() {
           </div>
           <div className="relative">
             <div className="aspect-[4/3] w-full rounded-3xl bg-white shadow-xl ring-1 ring-slate-200 overflow-hidden">
-              <img src="/hero-faceless.jpg" alt="Business collaboration (faceless, cold tone)" className="w-full h-full object-cover" />
+              <img src="https://images.pexels.com/photos/5926370/pexels-photo-5926370.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=500" alt="Business collaboration (faceless, cold tone)" className="w-full h-full object-cover" />
             </div>
           </div>
         </div>
