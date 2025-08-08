@@ -70,7 +70,6 @@ export default function App() {
       {/* Services */}
       <section id="services" className="py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          \1\n            <p className="mt-2 text-slate-600">Email: <a href="mailto:alex.t@nexapath.us" className="underline">Alex Tseng &lt;alex.t@nexapath.us&gt;</a></p>
           <div className="mt-8 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
               {title:t('供應鏈尋源','Sourcing'),desc:t('製造商／OEM／ODM 尋找，品質稽核與打樣協調','Find manufacturers/OEM/ODM; QA audits & sample coordination'),icon:'🔎'},
