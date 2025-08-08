@@ -91,6 +91,7 @@ export default function App() {
       <section id="industries" className="py-16 bg-white">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl font-extrabold">{t('聚焦產業','Industries We Serve')}</h2>
+            <p className="mt-2 text-slate-600">Email: <a href="mailto:alex.t@nexapath.us" className="underline">Alex Tseng &lt;alex.t@nexapath.us&gt;</a></p>
           <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {['電商與 D2C','製造與供應鏈','食品類'].map((z,i)=> (
               <div key={i} className="rounded-3xl p-6 border border-slate-200 bg-indigo-50/40">
