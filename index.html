@@ -4,27 +4,63 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="NexaPath - Business matchmaking and resource integration in Los Angeles, California, USA and APAC regions." />
-  <meta name="keywords" content="NexaPath, business matchmaking, Los Angeles, California, USA, APAC, cross-border business, network, partners" />
+  <meta name="keywords" content="NexaPath, business matchmaking, Los Angeles, California, USA, APAC, cross-border business, network, partners, 洛杉磯, 美國, 加州, 跨境商務, 在地資源整合" />
   <title>NexaPath Official Site</title>
   <link rel="icon" href="/logo-nexapath.png" />
   <link rel="stylesheet" href="styles.css" />
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      let lang = localStorage.getItem('nexapath-lang');
+      if (!lang) {
+        lang = navigator.language.startsWith('zh') ? 'zh' : 'en';
+        localStorage.setItem('nexapath-lang', lang);
+      }
+      setLanguage(lang);
+      document.getElementById('lang-toggle').addEventListener('click', () => {
+        lang = lang === 'en' ? 'zh' : 'en';
+        localStorage.setItem('nexapath-lang', lang);
+        setLanguage(lang);
+      });
+    });
+    function setLanguage(lang) {
+      const enElements = document.querySelectorAll('[data-lang="en"]');
+      const zhElements = document.querySelectorAll('[data-lang="zh"]');
+      if (lang === 'en') {
+        enElements.forEach(el => el.style.display = '');
+        zhElements.forEach(el => el.style.display = 'none');
+      } else {
+        enElements.forEach(el => el.style.display = 'none');
+        zhElements.forEach(el => el.style.display = '');
+      }
+    }
+  </script>
 </head>
 <body>
   <header>
     <img src="/logo-nexapath.png" alt="NexaPath Logo" class="logo" />
-    <h1>NexaPath</h1>
-    <p>We match you with perfect partners - Like a business Cupid!</p>
+    <h1 data-lang="en">NexaPath</h1>
+    <h1 data-lang="zh">NexaPath</h1>
+    <p data-lang="en">We match you with perfect partners - Like a business Cupid!</p>
+    <p data-lang="zh">跨境、在地資源整合專家，助你找到最佳夥伴。</p>
+    <button id="lang-toggle" style="margin-top:10px;">🌐</button>
   </header>
   <main>
     <section id="about">
-      <h2>About NexaPath</h2>
-      <p>Cross-border and local resource integration experts, helping you find the best partners.</p>
+      <h2 data-lang="en">About NexaPath</h2>
+      <h2 data-lang="zh">關於 NexaPath</h2>
+      <p data-lang="en">Cross-border and local resource integration experts, helping you find the best partners.</p>
+      <p data-lang="zh">我們擁有北美與亞太雙區供應鏈與合作網絡，跨產業經驗與市場在地化能力，助你快速找到最佳商業夥伴。</p>
       <ul>
-        <li>Network in North America & APAC</li>
-        <li>Bilingual project management and communication</li>
-        <li>Experience across e-commerce, manufacturing, fintech, gaming</li>
-        <li>Localized market entry strategy</li>
-        <li>Flexible engagement models</li>
+        <li data-lang="en">Network in North America & APAC</li>
+        <li data-lang="zh">北美＋亞太雙區供應鏈與合作網絡</li>
+        <li data-lang="en">Bilingual project management and communication</li>
+        <li data-lang="zh">中英雙語專案管理與溝通</li>
+        <li data-lang="en">Experience across e-commerce, manufacturing, fintech, gaming</li>
+        <li data-lang="zh">跨產業經驗（電商、製造、金融科技、遊戲）</li>
+        <li data-lang="en">Localized market entry strategy</li>
+        <li data-lang="zh">市場在地化能力</li>
+        <li data-lang="en">Flexible engagement models</li>
+        <li data-lang="zh">靈活的合作模式</li>
       </ul>
     </section>
   </main>
