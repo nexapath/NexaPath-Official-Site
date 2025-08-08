@@ -91,14 +91,14 @@ export default function App() {
       <section id="industries" className="py-16 bg-white">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl font-extrabold">{t('聚焦產業','Industries We Serve')}</h2>
-          <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {['電商與 D2C','支付金融','遊戲與數位內容','製造與供應鏈'].map((z,i)=> (
-              <div key={i} className="rounded-3xl p-6 border border-slate-200 bg-indigo-50/40">
-                <div className="font-semibold text-slate-800">{t(z,['E‑commerce & D2C','Payments/Fintech','Gaming & Digital','Manufacturing & Supply'][i])}</div>
-                <div className="text-slate-500 text-sm mt-1">{t('替代描述文字','Placeholder description')}</div>
-              </div>
-            ))}
-          </div>
+        <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {['電商與 D2C','支付金融','遊戲與數位內容','製造與供應鏈'].map((z,i)=> (
+            <div key={i} className="rounded-3xl p-6 border border-slate-200 bg-indigo-50/40">
+              <div className="font-semibold text-slate-800">{t(z,['E‑commerce & D2C','Payments/Fintech','Gaming & Digital','Manufacturing & Supply'][i])}</div>
+              <div className="text-slate-500 text-sm mt-1">{t('替代描述文字','Placeholder description')}</div>
+            </div>
+          ))}
+        </div>
         </div>
       </section>
 
