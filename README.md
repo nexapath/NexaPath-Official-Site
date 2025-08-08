@@ -1,6 +1,6 @@
 # NexaPath Official Site
 
-Vite + React + Tailwind single-page bilingual website for NexaPath (with LA/CA/USA SEO).
+Vite + React + Tailwind single-page bilingual website for NexaPath (LA/CA/USA SEO).
 
 ## Dev
 npm install

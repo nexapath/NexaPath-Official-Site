@@ -52,16 +52,8 @@ export default function App() {
             </div>
           </div>
           <div className="relative">
-            <div className="aspect-[4/3] w-full rounded-3xl bg-white shadow-xl ring-1 ring-slate-200 p-6 grid place-items-center">
-              <div className="text-center">
-                <div className="mx-auto w-24 h-24 rounded-2xl grid place-items-center mb-4 ring-1 ring-slate-200" style={{backgroundColor:'#EEF2FF'}}>
-                  <svg width="60" height="60" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M4 12h16M4 6h10M4 18h10" stroke={brandPrimary} strokeWidth="2.2" strokeLinecap="round"/>
-                  </svg>
-                </div>
-                <h3 className="font-bold text-xl">{t('資源地圖（示意）','Resource Map (Placeholder)')}</h3>
-                <p className="mt-2 text-slate-600">{t('供應商／渠道／顧問一站式整合','One‑stop integration of suppliers, channels, and advisors')}</p>
-              </div>
+            <div className="aspect-[4/3] w-full rounded-3xl bg-white shadow-xl ring-1 ring-slate-200 overflow-hidden">
+              <img src="/hero-faceless.jpg" alt="Business collaboration (faceless, cold tone)" className="w-full h-full object-cover" />
             </div>
           </div>
         </div>
@@ -91,14 +83,19 @@ export default function App() {
       <section id="industries" className="py-16 bg-white">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl font-extrabold">{t('聚焦產業','Industries We Serve')}</h2>
-        <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {['電商與 D2C','支付金融','遊戲與數位內容','製造與供應鏈'].map((z,i)=> (
-            <div key={i} className="rounded-3xl p-6 border border-slate-200 bg-indigo-50/40">
-              <div className="font-semibold text-slate-800">{t(z,['E‑commerce & D2C','Payments/Fintech','Gaming & Digital','Manufacturing & Supply'][i])}</div>
-              <div className="text-slate-500 text-sm mt-1">{t('替代描述文字','Placeholder description')}</div>
-            </div>
-          ))}
-        </div>
+          <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {['電商與 D2C','製造與供應鏈','食品類'].map((z,i)=> (
+              <div key={i} className="rounded-3xl p-6 border border-slate-200 bg-indigo-50/40">
+                <div className="font-semibold text-slate-800">{t(z,['E‑commerce & D2C','Manufacturing & Supply','Food Industry'][i])}</div>
+                <div className="text-slate-500 text-sm mt-1">
+                  {t(
+                    ['提供跨境與本地市場的整合電商解決方案','串接雙區供應鏈，優化成本與交期','協助食品品牌快速進入海外市場並確保合規'][i],
+                    ['Integrated e‑commerce solutions for cross‑border and local markets','Connecting dual‑region supply chains to optimize cost and lead time','Helping food brands expand globally with compliance ensured'][i]
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -113,6 +110,7 @@ export default function App() {
               { title: t('跨產業經驗','Cross‑industry experience'), desc: t('涵蓋電商、製造、金融科技與數位內容，理解不同場景需求。','Experience across e‑commerce, manufacturing, fintech, and gaming.') },
               { title: t('市場在地化能力','Localized market entry'), desc: t('提供在地化策略與夥伴，讓落地更順暢。','Localization strategy and partners to land smoothly.') },
               { title: t('靈活的合作模式','Flexible engagement'), desc: t('按需求選擇顧問、專案或長期合作，彈性組合。','Consulting, project‑based, or retainer—choose what fits.') },
+              { title: t('品牌在地化策略','Brand localization strategies'), desc: t('依不同市場文化與語言調整品牌定位與溝通訊息。','Adapt brand positioning and messaging to local culture and language.') },
             ].map((u, i) => (
               <div key={i} className="rounded-3xl border border-slate-200 bg-white p-6">
                 <h3 className="font-bold">{u.title}</h3>
@@ -127,12 +125,19 @@ export default function App() {
       <section id="process" className="py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl font-extrabold">{t('合作流程','How We Work')}</h2>
-          <ol className="mt-8 grid md:grid-cols-4 gap-6">
-            {[t('需求釐清','Discovery'),t('資源盤點','Scoping'),t('媒合與談判','Matching & Negotiation'),t('落地與優化','Delivery & Optimize')].map((step,i)=> (
+          <ol className="mt-8 grid md:grid-cols-3 lg:grid-cols-6 gap-6">
+            {[
+              {title: t('需求諮詢','Consultation'), desc: t('瞭解您的業務需求與目標市場。','Understand your goals and target markets.')},
+              {title: t('方案規劃','Proposal'), desc: t('提交量身訂做的合作方案與時程。','Present a tailored proposal and timeline.')},
+              {title: t('簽約合作','Agreement'), desc: t('確立合作條件、交付範圍與里程碑。','Confirm scope, terms, and milestones.')},
+              {title: t('執行與追蹤','Execution & Tracking'), desc: t('推進專案並定期同步進度。','Execute and sync progress regularly.')},
+              {title: t('成果交付','Delivery'), desc: t('按時交付成果並完成驗收。','Deliver outcomes on schedule and sign‑off.')},
+              {title: t('後續支持','Ongoing Support'), desc: t('提供長期支持與優化建議。','Provide ongoing support and optimization.')},
+            ].map((s,i)=> (
               <li key={i} className="rounded-3xl bg-white border border-slate-200 p-6">
                 <div className="w-9 h-9 rounded-full grid place-items-center text-white" style={{backgroundColor: brandPrimary}}>{i+1}</div>
-                <div className="font-semibold mt-3">{step}</div>
-                <div className="text-sm text-slate-600 mt-1">{t('替代流程說明文字','Placeholder step description')}</div>
+                <div className="font-semibold mt-3">{s.title}</div>
+                <div className="text-sm text-slate-600 mt-1">{s.desc}</div>
               </li>
             ))}
           </ol>
@@ -152,17 +157,15 @@ export default function App() {
         <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
           <div className="rounded-3xl bg-white shadow-sm ring-1 ring-slate-200 p-8">
             <h2 className="text-2xl font-extrabold">{t('聯絡我們','Contact Us')}</h2>
-            <p className="mt-2 text-slate-600">{t('聯絡信箱：alex.t@nexapath.us（暫以 Email 直接接收表單）','Email: alex.t@nexapath.us (currently receiving form submissions via email)')}</p>
             <form className="mt-6 grid gap-4" action="mailto:alex.t@nexapath.us" method="POST" encType="text/plain">
               <div className="grid sm:grid-cols-2 gap-4">
                 <input name="name" className="w-full rounded-2xl border border-slate-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-300" placeholder={t('您的名字','Your Name')} required />
                 <input name="email" className="w-full rounded-2xl border border-slate-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-300" placeholder="Email" type="email" required />
               </div>
               <input name="company" className="w-full rounded-2xl border border-slate-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-300" placeholder={t('公司 / 職稱（選填）','Company / Title (optional)')} />
-              <textarea name="message" className="w-full rounded-2xl border border-slate-300 px-4 py-3 h-28 resize-none focus:outline-none focus:ring-2 focus:ring-indigo-300" placeholder={t('簡述你的需求與時程（替代）','Brief your needs & timeline (placeholder)')} required />
+              <textarea name="message" className="w-full rounded-2xl border border-slate-300 px-4 py-3 h-28 resize-none focus:outline-none focus:ring-2 focus:ring-indigo-300" placeholder={t('簡述你的需求與時程','Brief your needs & timeline')} required />
               <div className="flex items-center gap-3">
                 <button type="submit" className="rounded-2xl px-5 py-3 text-white font-semibold w-fit hover:opacity-95" style={{backgroundColor: brandPrimary}}>{t('送出表單','Send')}</button>
-                <a href="mailto:alex.t@nexapath.us" className="text-sm text-indigo-700 underline">{t('或直接發信','Or email directly')}</a>
               </div>
             </form>
           </div>
@@ -171,8 +174,8 @@ export default function App() {
 
       {/* Footer */}
       <footer className="py-10 border-t border-slate-200 text-center text-sm text-slate-600">
-        <p>© {new Date().getFullYear()} {brand}. {t('版權所有。','All rights reserved.')}</p>
-        <p className="mt-1">{t('營運據點：洛杉磯｜遠端團隊（替代）','HQ: Los Angeles • Remote team (placeholder)')}</p>
+        <p>© 2025 NexaPath LLC. {t('版權所有。','All rights reserved.')}</p>
+        <p className="mt-1">{t('營運據點：洛杉磯｜遠端團隊','HQ: Los Angeles • Remote team')}</p>
       </footer>
     </main>
   )
