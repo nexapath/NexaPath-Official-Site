@@ -1,4 +1,4 @@
-import Breadcrumbs from '@/components/Breadcrumbs';
+import Breadcrumbs from 'components/Breadcrumbs';
 
 export const metadata = { title: '供應鏈顧問｜NexaPath' };
 export default function Page(){
