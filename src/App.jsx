@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Routes, Route, Link, NavLink, useLocation } from 'react-router-dom'
-import { Helmet } from 'react-helmet-async'
+import { Routes, Route } from 'react-router-dom'
 
 import Home from './pages/Home.jsx'
 import Services from './pages/Services.jsx'
@@ -9,73 +8,53 @@ import Process from './pages/Process.jsx'
 import Why from './pages/Why.jsx'
 import Contact from './pages/Contact.jsx'
 
-const brand = 'NexaPath'
-const brandPrimary = '#0A2A5E'
-
-function useLang() {
+export default function App() {
   const detect = () => (typeof navigator !== 'undefined' && (navigator.language || 'en')).toLowerCase().startsWith('zh') ? 'zh' : 'en'
   const [lang, setLang] = useState(localStorage.getItem('nexa_lang') || detect())
   useEffect(()=>{ localStorage.setItem('nexa_lang', lang) }, [lang])
-  return [lang, setLang]
-}
+  const t = (zh, en) => (lang==='zh'? zh : en)
 
-function ScrollToTop() {
-  const { pathname } = useLocation()
-  useEffect(() => { window.scrollTo({top:0, behavior:'instant'}) }, [pathname])
-  return null
-}
-
-function Layout({ lang, setLang, children }) {
   return (
-    <div className="min-h-screen bg-white text-slate-900">
-      <Helmet>
-        <link rel="canonical" href={`https://www.nexapath.us${window.location.pathname}`} />
-      </Helmet>
+    <main className="min-h-screen bg-white text-slate-900">
+      {/* Header (preserved) */}
       <header className="sticky top-0 z-50 bg-white/85 backdrop-blur border-b border-slate-200" style={{paddingTop:'env(safe-area-inset-top)'}}>
         <div className="mx-auto max-w-7xl h-16 px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-          <Link to="/" className="flex items-center gap-3 group">
+          <a href="#home" className="flex items-center gap-3 group">
             <span className="inline-flex items-center gap-2">
               <img src="/logo-nexapath.png" alt="NexaPath Logo" className="h-9 w-auto" />
               <span className="font-black text-xl tracking-tight" style={{color: brandPrimary}}>{brand}</span>
             </span>
-          </Link>
+          </a>
           <nav className="hidden md:flex gap-8 text-sm">
-            <NavLink to="/services" className={({isActive})=> isActive? 'font-semibold text-slate-900' : 'text-slate-600 hover:text-slate-900'}>{lang==='zh'?'服務內容':'Services'}</NavLink>
-            <NavLink to="/industries" className={({isActive})=> isActive? 'font-semibold text-slate-900' : 'text-slate-600 hover:text-slate-900'}>{lang==='zh'?'聚焦產業':'Industries'}</NavLink>
-            <NavLink to="/process" className={({isActive})=> isActive? 'font-semibold text-slate-900' : 'text-slate-600 hover:text-slate-900'}>{lang==='zh'?'合作流程':'Process'}</NavLink>
-            <NavLink to="/why" className={({isActive})=> isActive? 'font-semibold text-slate-900' : 'text-slate-600 hover:text-slate-900'}>{lang==='zh'?'為何選擇我們':'Why NexaPath'}</NavLink>
-            <NavLink to="/contact" className={({isActive})=> isActive? 'font-semibold text-slate-900' : 'text-slate-600 hover:text-slate-900'}>{lang==='zh'?'聯絡我們':'Contact'}</NavLink>
+            <a href="#services" className="hover:text-indigo-700">{t('服務','Services')}</a>
+            <a href="#industries" className="hover:text-indigo-700">{t('產業','Industries')}</a>
+            <a href="#process" className="hover:text-indigo-700">{t('合作流程','Process')}</a>
+            <a href="#why" className="hover:text-indigo-700">{t('為什麼選擇我們','Why Us')}</a>
+            <a href="#contact" className="hover:text-indigo-700">{t('聯絡','Contact')}</a>
           </nav>
-          <div className="flex items-center gap-2">
-            <button onClick={()=>setLang('en')} className={`px-2 py-1 rounded ${lang==='en'?'bg-slate-900 text-white':'text-slate-600 hover:bg-slate-100'}`}>EN</button>
-            <button onClick={()=>setLang('zh')} className={`px-2 py-1 rounded ${lang==='zh'?'bg-slate-900 text-white':'text-slate-600 hover:bg-slate-100'}`}>繁中</button>
+          <div className="flex items-center gap-3">
+            <button onClick={()=>setLang(lang==='zh'?'en':'zh')} className="rounded-xl px-3 py-2 border border-slate-300 text-sm hover:bg-slate-50" aria-label="language">
+              {lang==='zh'? 'EN':'中'}
+            </button>
+            <a href="#contact" className="rounded-2xl px-4 py-2 text-white text-sm font-semibold hover:opacity-95" style={{backgroundColor: brandPrimary}}>{t('取得顧問諮詢','Get a Consult')}</a>
           </div>
         </div>
       </header>
-      <main>{children}</main>
-      <footer className="mt-16 py-10 border-t border-slate-200">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-sm text-slate-500">
-          © {new Date().getFullYear()} NexaPath. All rights reserved.
-        </div>
-      </footer>
-    </div>
-  )
-}
-
-export default function App() {
-  const [lang, setLang] = useLang()
-  return (
-    <>
-      <ScrollToTop />
+      {/* Routes */}
       <Routes>
-        <Route path="/" element={<Layout lang={lang} setLang={setLang}><Home lang={lang} /></Layout>} />
-        <Route path="/services" element={<Layout lang={lang} setLang={setLang}><Services lang={lang} /></Layout>} />
-        <Route path="/industries" element={<Layout lang={lang} setLang={setLang}><Industries lang={lang} /></Layout>} />
-        <Route path="/process" element={<Layout lang={lang} setLang={setLang}><Process lang={lang} /></Layout>} />
-        <Route path="/why" element={<Layout lang={lang} setLang={setLang}><Why lang={lang} /></Layout>} />
-        <Route path="/contact" element={<Layout lang={lang} setLang={setLang}><Contact lang={lang} /></Layout>} />
-        <Route path="*" element={<Layout lang={lang} setLang={setLang}><Home lang={lang} /></Layout>} />
+        <Route path="/" element={<Home lang={lang} />} />
+        <Route path="/services" element={<Services lang={lang} />} />
+        <Route path="/industries" element={<Industries lang={lang} />} />
+        <Route path="/process" element={<Process lang={lang} />} />
+        <Route path="/why" element={<Why lang={lang} />} />
+        <Route path="/contact" element={<Contact lang={lang} />} />
+        <Route path="*" element={<Home lang={lang} />} />
       </Routes>
-    </>
+      {/* Footer (preserved) */}
+      <footer className="py-10 border-t border-slate-200 text-center text-sm text-slate-600">
+        <p>© 2025 NexaPath LLC. {t('版權所有。','All rights reserved.')}</p>
+        <p className="mt-1">{t('營運據點：洛杉磯｜遠端團隊','HQ: Los Angeles • Remote team')}</p>
+      </footer>
+    </main>
   )
 }
