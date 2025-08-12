@@ -1,7 +1,19 @@
 <!doctype html>
-<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>NexaPath</title><script>
-// GitHub Pages SPA fallback: redirect any deep link back to index.html while preserving path.
-sessionStorage.redirect = location.pathname + location.search + location.hash;
-</script></head>
-<body><p>Redirecting…</p><script>location.replace('/');</script></body></html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>NexaPath</title>
+  </head>
+  <body>
+    <p>Redirecting…</p>
+    <script>
+      // GitHub Pages SPA fallback:
+      // Store the original path, then go back to root where index.html will restore it.
+      try {
+        sessionStorage.setItem('redirect', location.pathname + location.search + location.hash);
+      } catch (e) {}
+      location.replace('/');
+    </script>
+  </body>
+</html>
