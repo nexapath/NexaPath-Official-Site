@@ -8,3 +8,8 @@ a { @apply text-blue-600 hover:underline; }
 .container { @apply max-w-6xl mx-auto px-4; }
 .card { @apply border rounded-2xl p-6 shadow-sm hover:shadow; }
 .prose p { @apply text-gray-700; }
+
+/* ---- Imported mobile/iOS fixes ---- */
+@supports (height: 100svh) { .min-h-screen { min-height: 100svh; }}
+section { scroll-margin-top: 88px; }
+img, svg, video, canvas { max-width: 100%; height: auto; }
