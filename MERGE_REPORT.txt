@@ -1,6 +1,0 @@
-Merge Strategy: Keep HTML structure from first version; overlay CSS/JS/Images from 20250808 version.
-CSS in 20250808 version copied over. New CSS added to HTML where not present originally.
-Injected new CSS links into the following HTML files:
- - legacy-vite/index.html:
-    * ../nexapath-optimized-20250808-r2-email-logo/src/index.css
-    * ../__MACOSX/nexapath-optimized-20250808-r2-email-logo/src/._index.css
