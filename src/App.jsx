@@ -8,13 +8,8 @@ export default function App() {
   const brand = 'NexaPath'
   const brandPrimary = '#0A2A5E'
 
-  // Formspree state
-  const [sent, setSent] = useState(false)
-  const [submitting, setSubmitting] = useState(false)
-  const [error, setError] = useState(null)
-  // TODO: replace with your real Formspree endpoint ID, e.g. https://formspree.io/f/abcdwxyz
+  // Formspree endpoint (replace with your real ID)
   const FORMSPREE_ENDPOINT = 'https://formspree.io/f/YOUR_FORMSPREE_ID'
-
 
   return (
     <main className="min-h-screen bg-white text-slate-900">
@@ -48,7 +43,7 @@ export default function App() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-8">
           <img src="/hero.jpg" alt="Los Angeles skyline with San Gabriel Mountains" className="w-full rounded-3xl shadow-sm ring-1 ring-slate-200" loading="eager" fetchpriority="high" />
         </div>
-      </section>
+      </section>>>
     
 
       {/* Hero */}
@@ -73,7 +68,7 @@ export default function App() {
             </div>
           </div>
         </div>
-      </section>
+      </section>>>
 
       {/* Services */}
       <section id="services" className="py-16">
@@ -92,7 +87,7 @@ export default function App() {
             ))}
           </div>
         </div>
-      </section>
+      </section>>>
 
       {/* Industries */}
       <section id="industries" className="py-16 bg-white">
@@ -112,7 +107,7 @@ export default function App() {
             ))}
           </div>
         </div>
-      </section>
+      </section>>>
 
       {/* Why NexaPath */}
       <section id="why" className="py-16 bg-white">
@@ -134,7 +129,7 @@ export default function App() {
             ))}
           </div>
         </div>
-      </section>
+      </section>>>
 
       {/* Process */}
       <section id="process" className="py-16">
@@ -157,7 +152,7 @@ export default function App() {
             ))}
           </ol>
         </div>
-      </section>
+      </section>>>
 
       {/* CTA band */}
       <section className="py-10">
@@ -165,26 +160,28 @@ export default function App() {
           <div className="text-lg font-semibold text-slate-800">{t('需要快速媒合可靠資源？','Need a trusted match, fast?')}</div>
           <a href="#contact" className="mt-4 md:mt-0 rounded-2xl px-5 py-3 text-white font-semibold" style={{backgroundColor: brandPrimary}}>{t('告訴我們你的需求','Tell Us Your Needs')}</a>
         </div>
-      </section>
+      </section>>>
 
       {/* Contact */}
       <section id="contact" className="py-16">
         <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
           <div className="rounded-3xl bg-white shadow-sm ring-1 ring-slate-200 p-8">
             <h2 className="text-2xl font-extrabold">{t('聯絡我們','Contact Us')}</h2>
-            <form className="mt-6 grid gap-4"><input type="text" name="_gotcha" className="hidden" tabIndex="-1" autoComplete="off" /> onSubmit={async (e) => { e.preventDefault(); setError(null); setSubmitting(true); const form = e.currentTarget; const data = Object.fromEntries(new FormData(form)); try {   const res = await fetch(FORMSPREE_ENDPOINT, {     method: 'POST',     headers: {'Accept':'application/json','Content-Type':'application/json'},     body: JSON.stringify({       name: data.name, email: data.email, company: data.company || '', message: data.message,       _subject: `New contact from ${data.name} (${data.email})`     })   });   const j = await res.json();   if (res.ok) { setSent(true); form.reset(); } else { setError(j.error || 'Submission failed'); } } catch (err) { setError(err.message || 'Network error'); } finally { setSubmitting(false); } }}>
+            
+            <form className="mt-6 grid gap-4" action={FORMSPREE_ENDPOINT} method="POST">
+              <input type="hidden" name="_subject" value="New contact from NexaPath site" />
+              <input type="text" name="_gotcha" className="hidden" tabIndex="-1" autoComplete="off" />
               <div className="grid sm:grid-cols-2 gap-4">
                 <input name="name" className="w-full rounded-2xl border border-slate-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-300" placeholder={t('您的名字','Your Name')} required />
                 <input name="email" className="w-full rounded-2xl border border-slate-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-300" placeholder="Email" type="email" required />
               </div>
               <input name="company" className="w-full rounded-2xl border border-slate-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-300" placeholder={t('公司 / 職稱（選填）','Company / Title (optional)')} />
-              <textarea name="message" className="w-full rounded-2xl border border-slate-300 px-4 py-3 h-28 resize-none focus:outline-none focus:ring-2 focus:ring-indigo-300" placeholder={t('簡述你的需求與時程','Brief your needs & timeline')} required />
+              <textarea name="message" className="w-full rounded-2xl border border-slate-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-300" rows="5" placeholder={t('簡述你的需求與時程','Brief your needs & timeline')} required />
               <div className="flex items-center gap-3">
-                <button type="submit" disabled={submitting} className="rounded-2xl px-5 py-3 text-white font-semibold w-fit hover:opacity-95 disabled:opacity-50" style={{backgroundColor: brandPrimary}}>{t('送出表單','Send')}</button>
+                <button type="submit" className="rounded-2xl px-6 py-3 text-white font-semibold shadow-sm" style={{backgroundColor: brandPrimary}}>{t('送出表單','Send')}</button>
               </div>
-              {sent && (<p className="text-green-600 text-sm">Thanks! Your message has been sent.</p>)}
-              {error && (<p className="text-red-600 text-sm">{error}</p>)}
             </form>
+
           </div>
         </div>
       
@@ -192,7 +189,7 @@ export default function App() {
               {t('您也可以直接透過電子郵件與我們聯繫：','You can also reach us directly via email:')}
               <a href="mailto:alex.t@nexapath.us" className="underline ml-1">Alex Tseng &lt;alex.t@nexapath.us&gt;</a>
             </div>
-    </section>
+    </section>>>
 
       {/* Footer */}
       <footer className="py-10 border-t border-slate-200 text-center text-sm text-slate-600">
