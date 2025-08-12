@@ -12,7 +12,7 @@ export default function Header() {
     <header className="bg-white/90 backdrop-blur border-b">
       <div className="container py-4 flex items-center justify-between">
         <Link href={`${base}/`} className="flex items-center gap-2 font-semibold text-xl">
-          <img src={`${base}/logo-nexapath.png`} alt="NexaPath logo" className="h-8 w-auto" />
+          <img src="/logo-nexapath.png" alt="NexaPath logo" className="h-8 w-auto" />
           NexaPath
         </Link>
         <nav className="hidden md:flex items-center gap-6 text-sm">
