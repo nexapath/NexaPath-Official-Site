@@ -9,7 +9,7 @@ export default function App() {
   const brandPrimary = '#0A2A5E'
 
   // Formspree endpoint (replace with your real ID)
-  const FORMSPREE_ENDPOINT = 'https://formspree.io/f/YOUR_FORMSPREE_ID'
+  const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mzzvoebg'
 
   return (
     <main className="min-h-screen bg-white text-slate-900">
@@ -43,7 +43,7 @@ export default function App() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-8">
           <img src="/hero.jpg" alt="Los Angeles skyline with San Gabriel Mountains" className="w-full rounded-3xl shadow-sm ring-1 ring-slate-200" loading="eager" fetchpriority="high" />
         </div>
-      </section>>>
+      </section>
     
 
       {/* Hero */}
@@ -68,7 +68,7 @@ export default function App() {
             </div>
           </div>
         </div>
-      </section>>>
+      </section>
 
       {/* Services */}
       <section id="services" className="py-16">
@@ -87,7 +87,7 @@ export default function App() {
             ))}
           </div>
         </div>
-      </section>>>
+      </section>
 
       {/* Industries */}
       <section id="industries" className="py-16 bg-white">
@@ -107,7 +107,7 @@ export default function App() {
             ))}
           </div>
         </div>
-      </section>>>
+      </section>
 
       {/* Why NexaPath */}
       <section id="why" className="py-16 bg-white">
@@ -129,7 +129,7 @@ export default function App() {
             ))}
           </div>
         </div>
-      </section>>>
+      </section>
 
       {/* Process */}
       <section id="process" className="py-16">
@@ -152,7 +152,7 @@ export default function App() {
             ))}
           </ol>
         </div>
-      </section>>>
+      </section>
 
       {/* CTA band */}
       <section className="py-10">
@@ -160,7 +160,7 @@ export default function App() {
           <div className="text-lg font-semibold text-slate-800">{t('需要快速媒合可靠資源？','Need a trusted match, fast?')}</div>
           <a href="#contact" className="mt-4 md:mt-0 rounded-2xl px-5 py-3 text-white font-semibold" style={{backgroundColor: brandPrimary}}>{t('告訴我們你的需求','Tell Us Your Needs')}</a>
         </div>
-      </section>>>
+      </section>
 
       {/* Contact */}
       <section id="contact" className="py-16">
@@ -189,7 +189,7 @@ export default function App() {
               {t('您也可以直接透過電子郵件與我們聯繫：','You can also reach us directly via email:')}
               <a href="mailto:alex.t@nexapath.us" className="underline ml-1">Alex Tseng &lt;alex.t@nexapath.us&gt;</a>
             </div>
-    </section>>>
+    </section>
 
       {/* Footer */}
       <footer className="py-10 border-t border-slate-200 text-center text-sm text-slate-600">
