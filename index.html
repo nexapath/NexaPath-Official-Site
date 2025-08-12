@@ -48,18 +48,6 @@
   }
 }
     </script>
-  
-    <script>
-      (function () {
-        try {
-          var redirect = sessionStorage.getItem('redirect');
-          if (redirect && redirect !== (location.pathname + location.search + location.hash)) {
-            sessionStorage.removeItem('redirect');
-            history.replaceState(null, '', redirect);
-          }
-        } catch (e) {}
-      })();
-    </script>
   </head>
   <body>
     <div id="root"></div>
