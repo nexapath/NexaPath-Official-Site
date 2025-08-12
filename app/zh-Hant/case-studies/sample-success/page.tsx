@@ -1,4 +1,4 @@
-import Breadcrumbs from 'components/Breadcrumbs';
+import Breadcrumbs from '../../../../components/Breadcrumbs';
 
 export const metadata = { title: '案例：Sample Brand｜NexaPath' };
 export default function Page(){

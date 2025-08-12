@@ -1,4 +1,4 @@
-import Breadcrumbs from 'components/Breadcrumbs';
+import Breadcrumbs from '../../../components/Breadcrumbs';
 
 export const metadata = { title: 'Supply Chain Consulting | NexaPath' };
 export default function Page(){

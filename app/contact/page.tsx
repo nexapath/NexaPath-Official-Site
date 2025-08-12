@@ -1,5 +1,5 @@
-    import Breadcrumbs from 'components/Breadcrumbs';
-import ContactForm from 'components/ContactForm';
+    import Breadcrumbs from '../../components/Breadcrumbs';
+import ContactForm from '../../components/ContactForm';
 
     export const metadata = { title: 'Contact | NexaPath' };
     export default function Page(){

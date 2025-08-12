@@ -1,4 +1,4 @@
-import Breadcrumbs from 'components/Breadcrumbs';
+import Breadcrumbs from '../../../components/Breadcrumbs';
 
 export const metadata = { title: 'Food Industry | NexaPath' };
 export default function Page(){

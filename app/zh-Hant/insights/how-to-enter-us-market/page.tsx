@@ -1,4 +1,4 @@
-import Breadcrumbs from 'components/Breadcrumbs';
+import Breadcrumbs from '../../../../components/Breadcrumbs';
 
 export const metadata = { title: '如何進入美國市場｜NexaPath' };
 export default function Page(){

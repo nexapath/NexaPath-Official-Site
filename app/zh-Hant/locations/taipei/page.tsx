@@ -1,4 +1,4 @@
-import Breadcrumbs from 'components/Breadcrumbs';
+import Breadcrumbs from '../../../../components/Breadcrumbs';
 
 export const metadata = { title: '台北據點｜NexaPath' };
 export default function Page(){
