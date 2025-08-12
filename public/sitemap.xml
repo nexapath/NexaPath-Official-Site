@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://nexapath.us/</loc></url>
-  <url><loc>https://nexapath.us/#services</loc></url>
-  <url><loc>https://nexapath.us/#industries</loc></url>
-  <url><loc>https://nexapath.us/#process</loc></url>
-  <url><loc>https://nexapath.us/#why</loc></url>
-  <url><loc>https://nexapath.us/#contact</loc></url>
+  <url><loc>https://www.nexapath.us/</loc><lastmod>2025-08-12</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://www.nexapath.us/services</loc><lastmod>2025-08-12</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.nexapath.us/industries</loc><lastmod>2025-08-12</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.nexapath.us/process</loc><lastmod>2025-08-12</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.nexapath.us/why</loc><lastmod>2025-08-12</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.nexapath.us/contact</loc><lastmod>2025-08-12</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
 </urlset>

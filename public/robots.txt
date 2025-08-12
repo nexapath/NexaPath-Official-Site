@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://nexapath.us/sitemap.xml
+Sitemap: https://www.nexapath.us/sitemap.xml
