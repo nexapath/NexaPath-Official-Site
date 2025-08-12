@@ -13,6 +13,18 @@
     <link rel="alternate" href="https://www.nexapath.us/?lang=en" hreflang="en">
     <link rel="alternate" href="https://www.nexapath.us/?lang=zh" hreflang="zh-TW">
     <link rel="icon" href="/favicon.ico" />
+    <!-- SPA fallback handler for GitHub Pages: restore intended path after 404 redirect -->
+    <script>
+      (function () {
+        try {
+          var redirect = sessionStorage.getItem('redirect');
+          if (redirect && redirect !== (location.pathname + location.search + location.hash)) {
+            sessionStorage.removeItem('redirect');
+            history.replaceState(null, '', redirect);
+          }
+        } catch (e) {}
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>
